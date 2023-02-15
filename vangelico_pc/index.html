@@ -13,9 +13,39 @@
 		<a href="../">
 			<div class="home"><</div>
 		</a>
+
 		<div class="container">
 			<div class="hackBox">
 				<div class="hackStart" id="buttonStart" onclick="gameStart()">Zacznij Hackować</div>
+
+				<div class="hackOptions">
+					<div class="hackCatDesc">Ustawienia prędkości (szybciej lub za szybko =/= trudniej, większy przedział == trudniej)</div>
+					<div class="hackButton">
+						<div class="hackDesc">Minimalna prędkość</div>
+						<input class="progress" type="range" min="2" max="6" value="2.5" step="0.1" oninput="minVelocityChangeFunction()" id="minVelocityChangeInput" />
+						<div class="hackCount" id="minVelocityId"></div>
+					</div>
+					<div class="hackButton">
+						<div class="hackDesc">Maksymalna prędkość</div>
+						<input class="progress" type="range" min="2" max="6" value="3.2" step="0.1" oninput="maxVelocityChangeFunction()" id="maxVelocityChangeInput" />
+						<div class="hackCount" id="maxVelocityId"></div>
+					</div>
+					<div class="hackCatDesc">Ustawienia czasu pomiędzy spawnem kulek</div>
+					<div class="hackButton">
+						<div class="hackDesc">Minimalny czas</div>
+						<input class="progress" type="range" min="0.2" max="2.5" value="0.5" step="0.1" oninput="minTimeoutChangeFunction()" id="minTimeoutChangeInput" />
+						<div class="hackCount" id="minTimeoutId"></div>
+					</div>
+					<div class="hackButton">
+						<div class="hackDesc">Maksymalny czas</div>
+						<input class="progress" type="range" min="0.2" max="2.5" value="2" step="0.1" oninput="maxTimeoutChangeFunction()" id="maxTimeoutChangeInput" />
+						<div class="hackCount" id="maxTimeoutId"></div>
+					</div>
+					<div class="hackBoxSettings">
+						<div class="hackPresset" onclick="anyCircleFunction(false)">Zaliczaj od połowy kulki</div>
+						<div class="hackPresset" onclick="anyCircleFunction(true)">Zaliczaj dowolną cześć kulki</div>
+					</div>
+				</div>
 
 				<div class="hackInfo" style="display: none">
 					<h2 id="textInfo"></h2>
