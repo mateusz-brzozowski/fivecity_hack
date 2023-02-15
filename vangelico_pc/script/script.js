@@ -1,10 +1,16 @@
 const hackFunction = document.querySelector('.hackFunction');
 const hackText = document.querySelector('.hackText');
+const hackOptions = document.querySelector('.hackOptions');
 const progressBar = document.getElementById('progressBox');
 const buttonStart = document.getElementById('buttonStart');
 const hackInfo = document.querySelector('.hackInfo');
 const textInfo = document.getElementById('textInfo');
 const progressBarId = document.getElementById('progress-bar');
+
+const minVelocityChangeInput = document.getElementById('minVelocityChangeInput');
+const maxVelocityChangeInput = document.getElementById('maxVelocityChangeInput');
+const minTimeoutChangeInput = document.getElementById('minTimeoutChangeInput');
+const maxTimeoutChangeInput = document.getElementById('maxTimeoutChangeInput');
 
 var __timePlay = 6666;
 var progressBarInterval;
@@ -28,8 +34,10 @@ var clickRed = 0,
 var minVelocity = 2500;
 var maxVelocity = 3200;
 
-var minTimeout = 600;
+var minTimeout = 500;
 var maxTimeout = 2000;
+
+var anyCircle = false;
 
 var velocityRed =  getRndInteger(minVelocity, maxVelocity) / 1000;
 var velocityYellow =  getRndInteger(minVelocity, maxVelocity) / 1000;
@@ -38,6 +46,11 @@ var velocityGreen =  getRndInteger(minVelocity, maxVelocity) / 1000;
 
 const gameInit = () => {
 	gameReset();
+	document.getElementById('minVelocityId').innerHTML = minVelocity / 1000;
+	document.getElementById('maxVelocityId').innerHTML = maxVelocity / 1000;
+	document.getElementById('minTimeoutId').innerHTML = minTimeout / 1000;
+	document.getElementById('maxTimeoutId').innerHTML = maxTimeout / 1000;
+	hackOptions.style.display = '';
 	hackFunction.style.display = 'none';
 	hackText.style.display = 'none';
 	progressBar.style.display = 'none';
@@ -74,6 +87,7 @@ const gameReset = () => {
 
 const gameStart = () => {
 	gameReset();
+	hackOptions.style.display = 'none';
 	buttonStart.style.display = 'none';
 	progressBar.style.display = 'block';
 	hackInfo.style.display = 'block';
@@ -130,16 +144,6 @@ function progressBarStart(type, time) {
 				clearTimeout(pinkTimeout);
 				clearTimeout(greenTimeout);
 
-				// if (getRndInteger(1, 100) > 50) createRed(1, 1, getRndInteger(-35, 0));
-				// if (getRndInteger(1, 100) > 50) createYellow(1, 1, getRndInteger(-35, 0));
-				// if (getRndInteger(1, 100) > 50) createPink(1, 1, getRndInteger(-35, 0));
-				// if (getRndInteger(1, 100) > 50) createGreen(1, 1, getRndInteger(-35, 0));
-
-				// clearTimeout(redTimeout);
-				// clearTimeout(yellowTimeout);
-				// clearTimeout(pinkTimeout);
-				// clearTimeout(greenTimeout);
-
 				setTimeout(() => {
 					createRed();
 				}, getRndInteger(minTimeout, maxTimeout));
@@ -174,6 +178,7 @@ function progressBarStart(type, time) {
 				buttonStart.style.display = '';
 				progressBar.style.display = 'none';
 				hackInfo.style.display = 'none';
+				hackOptions.style.display = '';
 			}
 		}
 	};
@@ -188,7 +193,13 @@ function getRndInteger(min, max) {
 function isColliding(a, b) {
 	const rect1 = a.getBoundingClientRect();
 	const rect2 = b.getBoundingClientRect();
-	const isInVerticalBounds = rect1.y < rect2.y + rect2.height - rect1.height/2 && rect1.y + rect1.height/2 > rect2.y;
+	var isInVerticalBounds = 0;
+	if (anyCircle)
+	{
+		isInVerticalBounds = rect1.y < rect2.y + rect2.height && rect1.y + rect1.height > rect2.y;
+	} else{
+		isInVerticalBounds = rect1.y < rect2.y + rect2.height - rect1.height/2 && rect1.y + rect1.height/2 > rect2.y;
+	}
 	return isInVerticalBounds;
 }
 
@@ -395,3 +406,27 @@ document.addEventListener(
 	},
 	false
 );
+
+function minVelocityChangeFunction() {
+	document.getElementById('minVelocityId').innerHTML = minVelocityChangeInput.value;
+	minVelocity = minVelocityChangeInput.value * 1000;
+}
+
+function maxVelocityChangeFunction() {
+	document.getElementById('maxVelocityId').innerHTML = maxVelocityChangeInput.value;
+	maxVelocity = maxVelocityChangeInput.value * 1000;
+}
+
+function minTimeoutChangeFunction() {
+	document.getElementById('minTimeoutId').innerHTML = minTimeoutChangeInput.value;
+	minTimeout = minTimeoutChangeInput.value * 1000;
+}
+
+function maxTimeoutChangeFunction() {
+	document.getElementById('maxTimeoutId').innerHTML = maxTimeoutChangeInput.value;
+	maxTimeout = maxTimeoutChangeInput.value * 1000;
+}
+
+function anyCircleFunction(isAnyCircle){
+	anyCircle = isAnyCircle;
+}
