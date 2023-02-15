@@ -215,6 +215,91 @@ a .home:hover {
     border-bottom-left-radius: 5px
 }
 
+.container .hackBox .hackButton {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    background-color: #0f0028;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    justify-content: space-between;
+    text-transform: uppercase;
+    transition: all .2s
+}
+
+.container .hackBox .hackDesc {
+    color: #fff;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    width: 300px;
+    display: flex;
+    justify-content: flex-start
+}
+
+.container .hackBox .hackCatDesc {
+    color: #fff;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    justify-content: flex-start
+}
+
+.container .hackBox .progress {
+    background: #323232;
+    border-left: 2px solid rgba(16, 255, 205, .2);
+    border-right: 2px solid rgba(16, 255, 205, .2);
+    border-radius: 6px;
+    height: 4px;
+    width: 300px;
+    outline: none;
+    opacity: .8;
+    margin: auto;
+    display: block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+}
+
+.container .hackBox .hackCount {
+    color: #fff;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    width: 100px;
+    display: flex;
+    justify-content: flex-end
+}
+
+.container .hackBox .hackBoxSettings {
+    display: flex;
+    justify-content: center
+}
+
+.container .hackBox .hackBoxSettings .hackPresset {
+    width: 100%;
+    margin: 20px;
+    display: flex;
+    border: none !important;
+    background-color: #0f0028;
+    padding: 15px;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 13px;
+    border: 1px solid;
+    text-align: center;
+    justify-content: space-around;
+    transition: all .2s
+}
+
+.container .hackBox .hackBoxSettings .hackPresset:hover {
+    background-color: #077d3a
+}
+
+
 @-webkit-keyframes animation-left-author {
     from {
         left: -500px
