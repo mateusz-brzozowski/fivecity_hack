@@ -138,7 +138,7 @@ const listHacks = [
 	},
 	{
 		name: 'Boosting',
-		desc: 'Połącz pary',
+		desc: 'Połącz pary made by Vistar#5482',
 		category: 'BOOSTING',
 		link: 'boosting_pairs',
 	}

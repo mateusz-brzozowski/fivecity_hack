@@ -154,10 +154,11 @@ a .home {
 			grid-template-columns: repeat(5, minmax(0, 1fr));
 			grid-template-rows: repeat(5, auto);
 			place-items: center;
+			position: relative;
 			gap: 15px;
-			padding: 0px;
-			min-width: 0px;
-			margin: 0px;
+			max-height: 180px;
+			max-width: 260px;
+			margin: 90px;
 
 			.el {
 				color: #fff;
